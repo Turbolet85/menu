@@ -1,0 +1,24 @@
+.sectionCenter {
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+
+	width: 90vw;
+	max-width: var(--max-width);
+	margin: 0 auto;
+}
+
+@media screen and (width >= 992px) {
+	.sectionCenter {
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+	}
+}
+
+@media screen and (width >= 1170px) {
+	.sectionCenter {
+		grid-template-columns: repeat(3, 1fr);
+		width: 95vw;
+	}
+}
+
