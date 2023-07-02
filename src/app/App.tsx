@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import menu from '../../public/data';
 import Categories from '../features/categories/Categories';
 import Menu from '../features/menu/Menu';
+import { setMenu } from '../features/menu/menuSlice';
 import Title from '../features/ui/title/Title';
 import styles from './app.module.css';
+import { RootState } from './rootReducer';
 
-const allCategories = ['all', ...new Set(menu.map((item) => item.category))];
+export const allCategories = ['all', ...new Set(menu.map((item) => item.category))];
 
 function App() {
-  const [menuItems, setMenuItems] = useState(menu);
-  const [categories] = useState(allCategories);
+  const dispatch = useDispatch();
+  const menuItems = useSelector((state: RootState) => state.menu);
+  const categories = useSelector((state: RootState) => state.categories);
 
   const filterItems = (category: string) => {
     const newItems = menu.filter((item) => item.category === category);
-    category === 'all' ? setMenuItems(menu) : setMenuItems(newItems);
+    if (category === 'all') {
+      dispatch(setMenu(menu));
+    } else {
+      dispatch(setMenu(newItems));
+    }
   };
 
   return (

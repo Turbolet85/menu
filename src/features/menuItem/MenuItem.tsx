@@ -1,13 +1,5 @@
+import { IMenuItem } from '../menu/menuSlice';
 import styles from './menuItem.module.css';
-
-export interface IMenuItem {
-  id: number;
-  title: string;
-  category: string;
-  price: number;
-  img: string;
-  desc: string;
-}
 
 const MenuItem = (props: IMenuItem) => {
   const { title, price, img, desc } = props;

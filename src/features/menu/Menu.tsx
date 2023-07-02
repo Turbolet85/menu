@@ -1,5 +1,6 @@
-import MenuItem, { IMenuItem } from '../menuItem/MenuItem';
+import MenuItem from '../menuItem/MenuItem';
 import styles from './menu.module.css';
+import { IMenuItem } from './menuSlice';
 
 export interface IMenuProps {
   items: IMenuItem[];
